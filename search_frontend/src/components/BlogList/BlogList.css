@@ -1,0 +1,9 @@
+/* Blog list container */
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between each blog card */
+    padding: 0 20px; /* Padding to align the content nicely within the container */
+    margin: 0 auto; /* Center the blog list on the page */
+    max-width: 800px; /* Limit the width of the blog list for better readability */
+}
