@@ -19,6 +19,7 @@ export const getAllBlogs = async (req, res, client) => {
         // If we have results
         if (searchResults.hits.length > 0) {
           allDocuments.push(...searchResults.hits.map(hit => hit.document));
+          console.log(searchResults)
           // Move to the next page
           page++;
           // If fewer results than per_page, exit the loop

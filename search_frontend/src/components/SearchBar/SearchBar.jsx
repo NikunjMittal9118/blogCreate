@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './SearchBar.css'
 
-const SearchBar = ({ setBlogs }) => {
+const SearchBar = ({ setBlogs, setResponseTime, setTotalResults }) => {
     const [query, setQuery] = useState('');
 
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.get(`http://localhost:3000/search?q=${query}`);
-            setBlogs(response.data);
+            setBlogs(response.data.searchDocuments);
+            console.log(response.data.searchDocuments.length)
+            setTotalResults(response.data.searchDocuments.length);
+            setResponseTime(response.data.responseTime);
+
         } catch (error) {
             console.error('Search error:', error);
         }

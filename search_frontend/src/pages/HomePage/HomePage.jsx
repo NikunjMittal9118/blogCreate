@@ -7,7 +7,8 @@ import HeaderPage from '../../components/Header/HeaderComponent.jsx';
 
 const HomePage = () => {
     const [blogs, setBlogs] = useState([]);
-
+    const [responseTime, setResponseTime] = useState(null)
+    const [totalResults, setTotalResults] = useState(0)
     useEffect(() => {
         const fetchBlogs = async () => {
             const response = await axios.get('http://localhost:3000/all');
@@ -21,8 +22,14 @@ const HomePage = () => {
             <HeaderPage />
             <h1 className="blog-search-title">Blog Search</h1>
             <div className="search-bar-container">
-                <SearchBar setBlogs={setBlogs} />
+                <SearchBar setBlogs={setBlogs} setResponseTime={setResponseTime} setTotalResults={setTotalResults} />
+                {responseTime && (
+                <div className="search-results-info">
+                    Found {totalResults} results in {responseTime} milliseconds
+                </div>
+                 )}
             </div>
+
             <BlogList blogs={blogs} />
         </div>
     );

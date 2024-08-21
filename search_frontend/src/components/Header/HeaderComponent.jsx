@@ -28,7 +28,7 @@ const HeaderPage = () => {
       <nav className="nav-links">
         <Link to="/">Home</Link>
         <Link to="/create">Create</Link>
-        <button onClick={handleLogout}>Logout</button>
+        <Link><button onClick={handleLogout}>Logout</button></Link>
       </nav>
     </header>
   );
